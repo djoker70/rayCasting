@@ -31,7 +31,7 @@ namespace WindowsFormsApplaba2
                 return max;
             return value;
         }
-
+        
         public int size;
         public float MAX;
         public float MIN;
@@ -227,15 +227,15 @@ namespace WindowsFormsApplaba2
 
         byte[] RayPix2(float x0, float y0, float z0, float[] d)
         {
-            //float[] tempintens = calculateIntense(x0, y0, z0, d[0], d[1], d[2]);
-            float[] tempintens = { 0f, 0f,  };
+            float[] tempintens = calculateIntense(x0, y0, z0, d[0], d[1], d[2]);
+            //float[] tempintens = { 0f, 0f,  };
             byte[] tempARGB = new byte[4];
             if (tempintens[0] != 0)
             {
-                if (tempintens[0] > isosurfValue1)
-                {
+               /* if (tempintens[0] > isosurfValue1)
+                {*/
                     tempARGB = intenseColors(ref tempintens[0], tempARGB);
-                }
+               /* }
                 if (tempintens[1] > isosurfValue2)
                 {
                     tempARGB = intenseColors(ref tempintens[1], tempARGB);
@@ -243,10 +243,11 @@ namespace WindowsFormsApplaba2
                 if (tempintens[2] > isosurfValue3)
                 {
                     tempARGB = intenseColors(ref tempintens[2], tempARGB);
-                }
+                }*/
                 return tempARGB;
             }
             else return tempARGB;
+            ;
         }
 
         float[] calculateIntense(float x0, float y0, float z0, float dx, float dy, float dz)
@@ -290,17 +291,17 @@ namespace WindowsFormsApplaba2
                     }
                     else if ((Bin.array[(int)x, (int)y, (int)z] > isosurfValue1) && (intersectIsosurfCount[0] < 8))
                     {
-                        intens[0] += (vis) * Bin.array[(int)x, (int)y, (int)z];
+                        intens[0] += /*(vis) */ Bin.array[(int)x, (int)y, (int)z];
                         intersectIsosurfCount[0]++;
                     }
-                    if ((intersectIsosurfCount[1] > 1) && (intersectIsosurfCount[1] < 8))
+                   /* if ((intersectIsosurfCount[1] > 1) && (intersectIsosurfCount[1] < 8))
                     {
                         intens[1] += Bin.array[(int)x, (int)y, (int)z] * (1 - transparency[intersectIsosurfCount[1]]) / intersectIsosurfCount[1];
                         intersectIsosurfCount[1]++;
                     }
                     else if ((Bin.array[(int)x, (int)y, (int)z] > isosurfValue2) && (intersectIsosurfCount[1] < 8))
                     {
-                        intens[1] += (vis) * Bin.array[(int)x, (int)y, (int)z];
+                        intens[1] += /*(vis)  Bin.array[(int)x, (int)y, (int)z];
                         intersectIsosurfCount[1]++;
                     }
                     if ((intersectIsosurfCount[2] > 1) && (intersectIsosurfCount[2] < 8))
@@ -314,9 +315,9 @@ namespace WindowsFormsApplaba2
                     else if ((Bin.array[(int)x, (int)y, (int)z] > isosurfValue3) && (intersectIsosurfCount[2] < 8))
 
                     {
-                        intens[2] += (vis)*Bin.array[(int)x, (int)y, (int)z];
+                        intens[2] += /*(vis)Bin.array[(int)x, (int)y, (int)z];
                         intersectIsosurfCount[2]++;
-                    }
+                    }*/
 
                 }
                 else if (i == 0)
@@ -386,6 +387,10 @@ namespace WindowsFormsApplaba2
         {
 
         }
-    
+
+        private void raycastingPickcherbox_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
